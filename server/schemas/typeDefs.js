@@ -5,12 +5,24 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    bookCount: Int
     savedBooks: [bookSchema]
   }
 
-  type Query {
-    users: [User]
+    type Book {
+    bookId: String
+    authors: [authors]
+    description: String
+    title: String
+    image: String
+    link: String
   }
+
+  type Query {
+    me: User
+  }
+
+
 `;
 
 module.exports = typeDefs;
