@@ -6,8 +6,8 @@ const resolvers = {
   Query: {
     users: async () => {
       return await User.find({});
-    }
-  },
+    },
+  
 
     me: async (parent, args, context) => {
       if (context.user) {
@@ -19,7 +19,8 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
-    },
+    }
+  },
 
     Mutation: {
     login: async (parent, { email, password }) => {
@@ -39,6 +40,8 @@ const resolvers = {
 
       return { token, user };
     },
+
+
      addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -46,7 +49,7 @@ const resolvers = {
       return { token, user };
     },
 
-    saveBook: async (parent, { input }, context) => {
+    savedBook: async (parent, { input }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -73,7 +76,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in!');
     },
-  }
+    }
 };
 
 module.exports = resolvers;
