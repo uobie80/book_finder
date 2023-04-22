@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
+  },
+  "engines": {
+    "node": "16.18.0"
   }
 }
